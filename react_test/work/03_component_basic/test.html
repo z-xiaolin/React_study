@@ -16,6 +16,7 @@
 
 <script type="text/babel">
 /*
+    组件：就是多个虚拟DOM对象的集合
 1. 自定义组件(Component) :
   1). 定义组件
     //方式1: 工厂(无状态)函数(最简洁, 推荐使用)
@@ -45,6 +46,63 @@
   2). 得到包含的虚拟DOM并解析为真实DOM
   3). 插入到指定的页面元素内部
 */
+
+/*
+    // TODO 1.创建组件
+    //方式1: 工厂(无状态)函数(最简洁, 推荐使用)
+    function MyComponent1() {
+        return <h2>方式1: 工厂(无状态)函数(最简洁, 推荐使用)</h2>
+    }
+
+    //方式2: ES6类语法(复杂组件, 推荐使用)
+    class MyComponent2 extends React.Component {
+        render(){
+            return <h2>方式2: ES6类语法(复杂组件, 推荐使用)</h2>
+        }
+    }
+
+    // 方式3: ES5老语法(不推荐使用了)
+    var MyComponent3 = React.createClass({
+        render(){
+            return <h2>方式3: ES5老语法(不推荐使用了)</h2>
+        }
+    })
+
+    // TODO 2.渲染组件
+    ReactDOM.render(<MyComponent1/>,document.getElementById('example1'))
+    ReactDOM.render(<MyComponent2/>,document.getElementById('example2'))
+    ReactDOM.render(<MyComponent3/>,document.getElementById('example3'))
+*/
+
+/* TODO 练习 */
+// TODO 创建组件
+    // 方式一：工厂函数方式，定义简单的组件
+    function MyComponent() {
+        return <h2>方式一：工厂函数方式，定义简单的组件</h2>
+    }
+    // 方式二：ES6 类语法，定义复杂的组件
+    class MyComponent2 extends React.Component{
+        render(){
+            return (
+                    <div>
+                        <h2>方式二：ES6 类语法，定义复杂的组件</h2>
+                        <h3>方式二：ES6 类语法，定义复杂的组件222</h3>
+                    </div>
+            )
+        }
+    }
+    // 方式三： ES5 语法，不推荐使用
+    var MyComponent3 = React.createClass({
+        render(){
+            return <h2>方式三： ES5 语法，不推荐使用</h2>
+        }
+    })
+
+    // TODO 渲染组件
+    ReactDOM.render(<MyComponent />,document.getElementById('example1'))
+    ReactDOM.render(<MyComponent2 />,document.getElementById('example2'))
+    ReactDOM.render(<MyComponent3 />,document.getElementById('example3'))
+
 </script>
 </body>
 </html>

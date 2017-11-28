@@ -27,6 +27,64 @@
      * Welcome: props.name  string
      * App: props.names    array
    */
+  
+  // 定义 主组件
+  class App extends React.Component{
+      render(){
+//          let names = this.props.names
+          let {names} = this.props; // ES6 的对象解构赋值
+          console.log(names);
+          return(
+              <div>
+                  {
+                      names.map((item,index)=>{
+                          return <Welcome name={item} key={index}/>
+                      })
+                  }
+              </div>
+          )
+      }
+  }
+  
+  // 定义 Welcome 组件
+    function Welcome(props) { // props 以形参 形式传入
+//        console.log(this); // undefined 此时函数内没有 this
+        return <h2>Welcome {props.name}</h2>
+    }
+
+    // 数据
+    let names = ["kobe","wade","Tony","Mary"]
+
+    // 渲染 主组件
+    ReactDOM.render(<App names={names}/>, document.getElementById('example'));
+
+/* 练习 */
+/*
+class App extends React.Component{
+    render(){
+        let {names} = this.props
+        console.log(names);
+        return (
+            /!* 根标签 *!/
+           <div>
+               {
+                   names.map((item,index)=>{
+                       return <Welcome name={item} key={index}/>
+                   })
+               }
+           </div>
+        )
+    }
+}
+function Welcome(props) {
+    console.log(props);
+    return <h3>Welcome {props.name} </h3>
+}
+
+let names = ["kobe","wade","Tony","Mary"]
+
+ReactDOM.render(<App names={names}/>, document.getElementById('example'));
+*/
 
 </script>
 </body>

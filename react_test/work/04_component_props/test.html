@@ -15,26 +15,29 @@
 
 <div id="example"></div>
 <div id="example2"></div>
+<div id="example3"></div>
 
 <script src="../js/react.js"></script>
 <script src="../js/react-dom.js"></script>
+<!-- 引入 在线的 prop-types 插件 -->
+<script src="https://cdn.bootcss.com/prop-types/15.6.0/prop-types.js"></script>
 <script src="../js/babel.min.js"></script>
 
 <script type="text/babel">
   /*
   组件3大属性之一: props属性
-  1. 每个组件对象都会有props(properties的简写)属性
+  1. 每个组件实例对象都会有props(properties的简写)属性
   2. 组件标签的所有属性都保存在props中
   3. 内部读取某个属性值: this.props.propertyName
   4. 作用: 通过标签属性从组件外向组件内传递数据(只读)
-  5. 对props中的属性值进行类型限制和必要性限制
+  5. 对props中的属性值进行类型限制和必要性限制 - 通过组件类的propTypes属性设置
     Person.propTypes = {
       name: React.PropTypes.string.isRequired,
       age: React.PropTypes.number.isRequired
     }
   6. 扩展属性: 将对象的所有属性通过props传递
     <Person {...person}/>
-  7. 默认属性值
+  7. 设置 实例对象的props属性的默认属性值 -- 通过 组件类的 defaultProps 属性设置
     Person.defaultProps = {
       name: 'Mary'
     };
@@ -52,6 +55,84 @@
     1). 如果性别没有指定, 默认为男
     2). 如果年龄没有指定, 默认为18
   */
+
+ /*
+    // TODO 创建组件
+    class Person extends React.Component{
+      render(){
+          // 通过 实例对象的 props 属性来读取传进的属性
+          console.log(this.props);
+          return (
+                  <ul>
+                      <li>姓名：{this.props.name}</li>
+                      <li>性别：{this.props.sex}</li>
+                      <li>年龄：{this.props.age}</li>
+                  </ul>
+          )
+      }
+  }
+
+  // 对 props中的属性值进行 类型限制 和 必要性限制
+  Person.propTypes = {
+      name:PropTypes.string.isRequired,
+      age:PropTypes.number.isRequired,// 警告
+      sex:PropTypes.string.isRequired,
+  }
+
+  // 设置 默认的props 属性
+  Person.defaultProps = {
+        sex:"男"
+  }
+
+  // 数据
+  let p1 = {name:"kobe", age:39, sex:"男"}
+  let p2 = {name:"Wade", age:36, sex:"男"}
+
+  
+  // TODO 渲染组件
+  // 通过 标签属性 从组件外 向 组件内 传递数据(只读)
+    ReactDOM.render(<Person name={p1.name} age={p1.age} sex={p1.sex}/>,document.getElementById('example'))
+//    ReactDOM.render(<Person name={p2.name} />,document.getElementById('example2'))
+    ReactDOM.render(<Person {...p2} />,document.getElementById('example2'))
+*/
+
+/* 练习 */
+// TODO 创建组件
+    class Person extends React.Component{
+        render(){
+            console.log(this.props);
+            return (
+                <div>
+                    <ul>
+                        <li>姓名：{this.props.name}</li>
+                        <li>性别：{this.props.sex}</li>
+                        <li>年龄：{this.props.age}</li>
+                        <li>住址：{this.props.address}</li>
+                    </ul>
+                </div>
+            )
+        }
+    }
+    // 限制数据的类型与必要性限制
+    Person.propTypes = {
+        name:PropTypes.string.isRequired,
+        age:PropTypes.number.isRequired,
+        sex:PropTypes.string.isRequired,
+        address:PropTypes.string.isRequired
+    }
+    // 设置props的默认属性值
+    Person.defaultProps = {
+        sex:"男",
+        age:20
+    }
+    // 数据
+    let per1 = {name:"jack",age:30,sex:"男",address:"美国"}
+    let per2 = {name:"Kobe",age:39,sex:"男",address:"美国"}
+    let per3 = {name:"Mary",age:20,sex:"女",address:"英国"}
+    // 渲染组件
+    ReactDOM.render(<Person name={per1.name} address={per1.address}/>, document.getElementById('example'));
+    ReactDOM.render(<Person {...per2}/>, document.getElementById('example2'));
+    ReactDOM.render(<Person {...per3}/>, document.getElementById('example3'));
 
 </script>
 </body>
