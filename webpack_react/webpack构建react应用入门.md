@@ -12,7 +12,7 @@
   
 	    ```
 	    npm install webpack babel-loader --save-dev
-	    npm install webpack-dev-server
+	    npm install webpack-dev-server  // 热加载工具
 	    ```
 ##2. webpack配置文件: webpack.config.js
 	  ```

@@ -15,6 +15,35 @@
    自定义组件:
    功能描述: 让指定的文本做显示/隐藏的动画
    */
+
+  //定义组件
+  class Animation  extends React.Component{
+      constructor(props){
+          super(props)
+          this.state = {
+              opacity:1
+          }
+      }
+      // 组件挂载完毕 的函数
+      componentDidMount(){
+          let {opacity} = this.state
+          setInterval(()=> {
+              opacity -= 0.05
+              if(opacity < 0.01){
+                  opacity = 1
+              }
+              // 修改状态 -- 放在循环定时器内修改状态
+              this.setState({opacity})
+          },150)
+      }
+      render(){
+          let {opacity} = this.state
+          return <h3 style={{opacity}}>atguigu.com!</h3>
+      }
+  }
+  // 渲染组件
+  ReactDOM.render(<Animation  />, document.getElementById('example'));
+
 </script>
 </body>
 </html>

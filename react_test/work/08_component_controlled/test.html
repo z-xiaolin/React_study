@@ -29,6 +29,35 @@
     3. 输入数据时, 下面的数据同步变化
   */
 
+  // 自定义双向数据流组件(受控组件)
+  class App extends React.Component{
+      constructor(props){
+          super(props)
+
+          // 初始化状态
+          this.state = {
+              msg:"atguigu.com"
+          }
+          this.handleChange = this.handleChange.bind(this)
+      }
+      handleChange(event){
+          this.setState({
+              msg: event.target.value
+          })
+      }
+      render(){
+          let msg = this.state.msg
+          return (
+              <div>
+                  <input onChange={this.handleChange} type="text" value={msg} />
+                  <p>{msg}</p>
+              </div>
+          )
+      }
+  }
+  // 渲染组件
+    ReactDOM.render(<App />, document.getElementById('example'));
+  
 </script>
 </body>
 </html>

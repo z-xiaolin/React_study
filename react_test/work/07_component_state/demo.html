@@ -41,6 +41,85 @@
       2). 如果输入的文本两边有空格, 去掉空格后添加
     */
 
+    // 定义主组件
+      class App extends React.Component{
+          constructor(props){
+              super(props)
+
+              // 初始化数据/状态
+              this.state = {
+                  todos: ["吃饭","睡觉","打豆豆"]
+              }
+
+              this.add = this.add.bind(this)
+          }
+          // 定义函数，来得到内部组件传进来的数据
+          add(Newtodo){
+              let todos = this.state.todos
+              todos.unshift(Newtodo)
+              // 修改状态
+              this.setState({todos})
+          }
+
+          render(){
+              let todos = this.state.todos
+              return (
+                  <div>
+                      <h2>Simple TODO List</h2>
+                      <AddTodo add={this.add} length={todos.length}/>
+                      <TodoList todos={todos}/>
+                  </div>
+              )
+          }
+      }
+
+      // 定义 AddTodo 组件
+      class AddTodo extends React.Component{
+          constructor(props){
+              super(props)
+              this.newTodo = this.newTodo.bind(this)
+          }
+
+          newTodo(){
+              let Newtodo = this.refs.msg.value
+              // 判断输入的内容是否合法
+              if(!Newtodo.trim()){
+                  alert("输入内容不能为空！")
+                  return
+              }
+              // 将数据传入 主组件中
+              this.props.add(Newtodo)
+              // 清空 内容
+              this.refs.msg.value = ""
+          }
+
+          render(){
+              return (
+                  <div>
+                      <input ref="msg" type="text"/>
+                      <button onClick={this.newTodo}>Add #{this.props.length}</button>
+                  </div>
+              )
+          }
+      }
+      
+      // 定义 TodoList 组件
+      class TodoList extends React.Component{
+          render(){
+              let {todos} = this.props
+              return (
+                      <ul>
+                          {
+                              todos.map((item,index) => <li key={index}>{item}</li>)
+                          }
+                      </ul>
+              )
+          }
+      }
+      
+      // 渲染组件
+      ReactDOM.render(<App />, document.getElementById('example'));
+
   </script>
 </body>
 </html>
