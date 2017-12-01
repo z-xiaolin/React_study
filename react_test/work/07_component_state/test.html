@@ -39,7 +39,7 @@
     2. 点击标题更新为: 我喜欢你
   */
   
-  // 定义组件
+ /* // 定义组件
     class LikeMe extends React.Component{
         constructor(props){
             super(props)
@@ -54,10 +54,10 @@
         // 定义点击事件回调函数
         ChangeLike(){
             // 修改 状态
-            /*let isLike = !this.state.isLike
+            /!*let isLike = !this.state.isLike
             this.setState({
                 isLike
-            })*/
+            })*!/
 
             this.setState({
                 isLike:!this.state.isLike
@@ -71,36 +71,33 @@
     }
     // 渲染组件
     ReactDOM.render(<LikeMe />, document.getElementById('example'));
-
+*/
 /* 练习 */
-    /*class App extends React.Component{
+    // 定义组件
+    class App extends React.Component{
         constructor(props){
             super(props)
-
-            // 初始化状态
             this.state = {
-                isLike:false
+                msg:"李敏镐"
             }
-            // 修改this值
-            this.ChangeLike = this.ChangeLike.bind(this)
+            this.handleChange = this.handleChange.bind(this)
         }
 
-        ChangeLike(){
-            // 修改状态
+        handleChange(){
             this.setState({
-                isLike:!this.state.isLike
+                msg:this.refs.a.value
             })
         }
 
         render(){
-            let msg = this.state.isLike ?  "一二三四" : "四三二一"
-            return <h2 onClick={this.ChangeLike}> {msg}</h2>
-
+            return <h3>你喜欢的男星是：<input ref="a" onChange={this.handleChange} type="text" value={this.state.msg}/> </h3>
         }
     }
+
     // 渲染组件
-ReactDOM.render(<App />, document.getElementById('example'));
-*/
+    ReactDOM.render(<App />, document.getElementById('example'));
+
+
 </script>
 </body>
 </html>

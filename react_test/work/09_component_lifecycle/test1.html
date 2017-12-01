@@ -41,8 +41,93 @@
     * 可以在componentWillUnmount()做一些收尾工作: 停止监听
     * 生命周期还有一个方法(后面需要时讲): componentWillReceiveProps
   */
+  
+  /* 练习 */
+  // 定义组件
+  class App extends React.Component{
+      constructor(props){
+          super(props)
+          // 初始化数据/状态
+          this.state = {
+              data:[
+                  {name:"李敏镐",age:32},
+                  {name:"金秀贤",age:30},
+                  {name:"李钟硕",age:31}
+              ]
+          }
+      }
+      // 组件将要被挂载
+      componentWillMount(){
+          console.log("componentWillMount()-组件将要被挂载");
+          // 通过会 开启监听, 发送ajax请求，开启定时器
+          setTimeout(()=>{
+              console.log("setTimeout()-1000");
+              this.setState({
+                  data:[
+                      {name:"李敏镐",age:32},
+                      {name:"朴信惠",age:29},
+                      {name:"Tony",age:23}
+                  ]
+              })
+          },1000)
+      }
+      // 组件已被挂载
+      componentDidMount(){
+          console.log("componentDidMount()-组件已被挂载");
+          // 通过会 开启监听, 发送ajax请求，开启定时器
+          setTimeout(()=>{
+              console.log("setTimeout()-3000");
+              this.setState({
+                  data:[
+                      {name:"李敏镐",age:32},
+                      {name:"朴信惠",age:29},
+                      {name:"Tony",age:23}
+                  ]
+              })
+          },3000)
+          
+          // 开启循环定时器
+          this.Interval = setInterval(()=>{
+              console.log("开启循环定时器");
+          },1000)
+          
+          setTimeout(()=>{
+              // 将组件 移出容器
+              ReactDOM.unmountComponentAtNode(document.getElementById('example'))
+          },6000)
+      }
+      // 组件将要被更新/重新被渲染
+      componentWillUpdate(){
+          console.log("componentWillUpdate()-组件将要被更新/重新被渲染");
+      }
+      // 组件已被更新
+      componentDidUpdate(){
+          console.log("componentDidUpdate()-组件已被更新");
+      }
+      // 组件将要被卸载/移出容器
+      componentWillUnmount(){
+          console.log("componentWillUnmount()-组件将要被卸载/移出容器");
+          // 通过 做一些收尾工作: 停止监听，关闭定时器
+          clearInterval(this.Interval)
+      }
+      // 返回 虚拟DOM对象
+      render(){
+          console.log("render()-渲染组件");
+          let {data} = this.state
+          return (
+              <div style={{color: "deeppink"}}>
+                  {
+                      data.map((item,index) => <li key={index}>{item.name}--{item.age}</li>)
+                  }
+              </div>
+          )
+      }
+  }
+  
+  // 渲染组件
+  ReactDOM.render(<App />, document.getElementById('example'));
 
-  //定义组件
+ /* //定义组件
     class App extends React.Component{
         // 构造函数
         constructor(props){
@@ -58,7 +143,7 @@
         // 组件将要被挂载
         componentWillMount(){
             console.log("componentWillMount() 组件将要被挂载");
-            /* 发送ajax请求，开启定时器  */
+            /!* 发送ajax请求，开启定时器  *!/
             setTimeout(function () {
                 // 更新状态
                 this.setState({
@@ -82,7 +167,7 @@
         // 组件已挂载完毕
         componentDidMount(){
             console.log("componentDidMount() 组件已挂载完毕");
-            /* 发送ajax请求，开启定时器  */
+            /!* 发送ajax请求，开启定时器  *!/
             setTimeout(()=>{
                 // 移出组件，将虚拟DOM对象从真实容器中被移出
                 ReactDOM.unmountComponentAtNode(document.getElementById('example'))
@@ -116,7 +201,7 @@
 
     // 渲染组件
     ReactDOM.render(<App />, document.getElementById('example'));
-
+*/
 </script>
 </body>
 </html>

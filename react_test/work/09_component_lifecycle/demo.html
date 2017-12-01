@@ -16,6 +16,43 @@
    功能描述: 让指定的文本做显示/隐藏的动画
    */
 
+  /* 练习 */
+  // 定义组件
+  class SH extends React.Component{
+      constructor(props){
+          super(props)
+          this.state ={
+              opacity:1
+          }
+      }
+      // 组件挂载完毕后
+      componentDidMount(){
+          let opacity = this.state.opacity
+          setInterval(()=>{
+              opacity -= 0.05
+              if(opacity < 0.01){
+                  opacity = 1
+              }
+              this.setState({
+                  opacity
+              })
+          },150)
+      }
+
+      render(){
+          return (
+              <div>
+                  <h2 style={{opacity:this.state.opacity}}>汪星人。。。</h2>
+                  <h2 style={ {opacity:this.state.opacity} }>喵星人。。。</h2>
+              </div>
+          )
+      }
+  }
+  
+  // 渲染组件
+  ReactDOM.render(<SH />, document.getElementById('example'));
+
+/*
   //定义组件
   class Animation  extends React.Component{
       constructor(props){
@@ -43,6 +80,7 @@
   }
   // 渲染组件
   ReactDOM.render(<Animation  />, document.getElementById('example'));
+*/
 
 </script>
 </body>
