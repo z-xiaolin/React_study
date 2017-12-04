@@ -47,7 +47,7 @@
       text-align: center;
     }
     ```
-* 实现按需加载(css/js)
+* 实现 按需加载(css/js)
   * 使用 eject 命令将所有内建的配置暴露出来
     ```
     npm run eject
