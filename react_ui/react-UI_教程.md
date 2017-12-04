@@ -52,7 +52,7 @@
     ```
     npm run eject
     ```
-  * 下载babel-plugin-import(用于按需加载组件代码和样式的 babel 插件)
+  * 下载 babel-plugin-import (用于按需加载组件代码和样式的 babel 插件)
     ```
     npm install babel-plugin-import --save-dev
     ```
