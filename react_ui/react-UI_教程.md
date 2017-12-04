@@ -1,4 +1,4 @@
-# 使用开源的ant-design库开发项目指南
+# 使用开源的 ant-design库开发项目指南
 
 ## 1. 最流行的开源React UI组件库
 * material-ui(国外)
@@ -51,6 +51,12 @@
   * 使用 eject 命令将所有内建的配置暴露出来
     ```
     npm run eject
+    注意：当出问题时 执行下面两个指令
+    # Revert changes to modified files.
+    git reset --hard
+
+    # Remove all untracked files and directories. (`-f` is `force`, `-d` is `remove directories`)
+    git clean -fd
     ```
   * 下载 babel-plugin-import (用于按需加载组件代码和样式的 babel 插件)
     ```

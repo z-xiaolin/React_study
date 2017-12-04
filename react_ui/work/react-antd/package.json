@@ -1,11 +1,11 @@
 {
-  "name": "hello-router",
+  "name": "react-antd",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "antd": "^2.13.11",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-router": "^3.2.0",
     "react-scripts": "1.0.17"
   },
   "scripts": {
@@ -13,5 +13,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "babel-plugin-import": "^1.6.2"
   }
 }
