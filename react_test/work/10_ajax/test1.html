@@ -36,34 +36,52 @@ class AJAX extends React.Component{
         }
     }
 
+    // 组件挂载完毕后 发送 ajax 请求
     componentDidMount(){
         let url = `https://api.github.com/users/${this.props.name}/gists`
-        // 使用 axios 发送 AJAX 请求
-        axios.get(url)
-            .then((response)=>{
+        // 方式一：使用 axios 发送 AJAX 请求
+        /*axios.get(url)
+            .then((response)=>{ // 响应成功的 回调函数
                 console.log(response.data);
-                let data = response.data
+                let data = response.data // 通过 response.data 来得到数据
                 let lastGist = data[0]
+                // 更新状态
                 this.setState({
                     lastGistUrl:lastGist.html_url
                 })
             })
-            .catch((error)=>{
+            .catch((error)=>{ // 响应失败的 回调函数
                 console.log(error.response.data);
+            })*/
+
+        // 方式二：使用 fetch 发送 AJAX 请求
+        fetch(url)
+            .then( response => {
+                return response.json()
+            })
+            .then( data => {
+                console.log(data); // 数组
+                this.setState({
+                    lastGistUrl: data[0].html_url
+                })
+            })
+            .catch( error => {
+                console.log("Oops error");
             })
     }
 
     render(){
-        if(this.state.lastGistUrl === null){
+        let {lastGistUrl} = this.state
+//        if(lastGistUrl === null){
+        if(!lastGistUrl){
             return <h2> Loading......</h2>
         } else {
             return(
                     <div>
-                        {this.props.name}'s last gist is <a href={this.state.lastGistUrl}>here</a>
+                        {this.props.name}'s last gist is <a href={lastGistUrl}>here</a>
                     </div>
             )
         }
-
     }
 }
 let data = "octocat"

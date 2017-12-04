@@ -35,7 +35,7 @@ class App extends React.Component{
     componentWillMount(){
         PubSub.subscribe("message", (msg,data) => { // 第一个参数是 事件名；第二个是 数据
             /* 注意：回调函数中的this 值需要修改，否则改为 箭头函数 */
-            console.log(msg,data); // message 0
+            // console.log(msg,data); // message 0
             let {comments} = this.state
             // splice()-- 对数组的 增删改 操作
             comments.splice(data,1)
