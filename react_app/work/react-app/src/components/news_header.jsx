@@ -144,7 +144,7 @@ class NewsHeader extends React.Component{
                         </div>
                     </Col>
                     <Col span={19}>
-                        {/*菜单： mode="horizontal" -- 水平排列 */}
+                        {/* 导航菜单： mode="horizontal" -- 水平排列 */}
                         <Menu onClick={this.changeKey} mode="horizontal" selectedKeys={[key]}>
                             <MenuItem key="toutiao">
                                 <Icon type="appstore"/> 头条
@@ -170,10 +170,11 @@ class NewsHeader extends React.Component{
                             <MenuItem key="shishang">
                                 <Icon type="appstore"/> 时尚
                             </MenuItem>
+                            {/* 右侧的 登录注册按钮 */}
                             {UserItem}
                         </Menu>
 
-                        {/*对话框的弹层 -- 用户登录/注册 */}
+                        {/* 对话框的弹层 -- 用户登录/注册 */}
                         <Modal title="用户中心" visible={isShow} okText="确定"
                             onOk={this.changeShow.bind(this, false)} onCancel={this.changeShow.bind(this, false)}>
                             <Tabs onChange={ ()=> this.props.form.resetFields()}>
