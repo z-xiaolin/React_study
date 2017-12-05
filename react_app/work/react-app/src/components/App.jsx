@@ -4,7 +4,6 @@ import NewsHeader from "./news_header"
 import NewsFooter from "./news_footer"
 
 class App extends React.Component{
-
     render(){
         return (
             <div>

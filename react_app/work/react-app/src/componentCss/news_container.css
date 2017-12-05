@@ -1,0 +1,62 @@
+.newsContainer {
+  margin-top: 20px;
+}
+.leftContainer1 {
+  width: 400px;
+  float: left;
+}
+
+.carousel_img img{
+  width: 400px;
+}
+
+.new_img_block {
+  float: left;
+  margin-right: 7px;
+  margin-bottom: 10px;
+}
+
+.new_img_block h3{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.news_tab {
+  float: left;
+  width: 430px;
+  margin-left: 10px;
+}
+
+.news_tab li a{
+  display: block;
+  font-size: 14px;
+  white-space:nowrap ;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #666;
+}
+
+.react_pro {
+  width: 380px;
+  float: left;
+  margin-left: 10px;
+}
+.pro {
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.pro a {
+  float: left;
+  width: 85px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+}
+
+.pro_bg {
+  background: #eee;
+
+
+}

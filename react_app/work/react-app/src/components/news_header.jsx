@@ -134,6 +134,7 @@ class NewsHeader extends React.Component{
 
         return (
             <div>
+                {/* 栅格 来布局 */}
                 <Row>
                     <Col span={1}></Col>
                     <Col span={3}>
@@ -143,7 +144,7 @@ class NewsHeader extends React.Component{
                         </div>
                     </Col>
                     <Col span={19}>
-                        {/*栅格： mode="horizontal" -- 水平排列 */}
+                        {/*菜单： mode="horizontal" -- 水平排列 */}
                         <Menu onClick={this.changeKey} mode="horizontal" selectedKeys={[key]}>
                             <MenuItem key="toutiao">
                                 <Icon type="appstore"/> 头条
@@ -225,5 +226,7 @@ class NewsHeader extends React.Component{
         )
     }
 }
-// this.props.form
+/*
+* 1、this.props.form
+* 2、getFieldDecorator：用于对表单相进行双向数据绑定 */
 export default Form.create()(NewsHeader)
