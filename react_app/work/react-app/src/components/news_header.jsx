@@ -4,7 +4,7 @@ import  axios from "axios"
 
 import logo from "../images/logo.png"
 // 引入 antd 库 的组件
-import { Row, Col, Menu, Icon, Button,Modal, Tabs, Form, Input, message, } from "antd"
+import { Row, Col, Menu, Icon, Button, Modal, Tabs, Form, Input, message, } from "antd"
 const MenuItem = Menu.Item
 const TabPane = Tabs.TabPane
 const FormItem = Form.Item
@@ -23,8 +23,9 @@ class NewsHeader extends React.Component{
 
     // 页面将要被挂载时
     componentWillMount(){
-        // 判断用户是否是登录
+        // 获取存储在 localStore 中的 用户信息
         let userObj = JSON.parse(localStorage.getItem("user_key"))
+        // 判断用户是否是登录
         if(userObj){ // 登录状态
             // 修改状态
             this.setState({
